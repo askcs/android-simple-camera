@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <attr name="scButtonTakePictureStyle" format="reference"/>
+  <attr name="scButtonSwitchCameraStyle" format="reference"/>
+  <attr name="scButtonRecordVideoStyle" format="reference"/>
+  <attr name="scButtonStopRecordingStyle" format="reference"/>
+  <attr name="scButtonAcceptStyle" format="reference"/>
+  <attr name="scButtonRejectStyle" format="reference"/>
+
+</resources>

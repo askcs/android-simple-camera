@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="hello">Hello camera!</string>
+  <string name="lib_name">camera</string>
+  <string name="sc_menu_label_quality">Quality</string>
+  <string name="sc_image_quality">Image quality: %1$s%</string>
+</resources>

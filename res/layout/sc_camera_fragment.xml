@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/sc_background">
+
+  <FrameLayout
+    android:id="@+id/camera_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
+
+  <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom|center_horizontal"
+    android:layout_marginBottom="16dp"
+    >
+
+    <ImageButton
+      android:id="@+id/btn_flip_camera"
+      style="?attr/scButtonSwitchCameraStyle"
+      />
+
+    <ImageButton
+      android:id="@+id/btn_take_picture"
+      style="?attr/scButtonTakePictureStyle"
+      />
+
+    <ImageButton
+      android:id="@+id/btn_record_video"
+      style="?attr/scButtonRecordVideoStyle"
+      />
+
+    <ImageButton
+      android:id="@+id/btn_stop_recording_video"
+      style="?attr/scButtonStopRecordingStyle"
+      />
+
+  </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/sc_background"
+  >
+
+  <uk.co.senab.photoview.PhotoView
+    android:id="@+id/photo"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
+
+  <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom|center_horizontal"
+    android:layout_marginBottom="16dp">
+
+    <ImageButton
+      android:id="@+id/btn_accept"
+      style="?attr/scButtonAcceptStyle"
+      />
+
+    <ImageButton
+      android:id="@+id/btn_reject"
+      style="?attr/scButtonRejectStyle"
+      />
+
+  </LinearLayout>
+
+</FrameLayout>

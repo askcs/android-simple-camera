@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <color name="sc_background">#ff000000</color>
+  <color name="sc_button_positive">#ff669900</color>
+  <color name="sc_button_neutral">#ff0099cc</color>
+  <color name="sc_button_negative">#ffcc0000</color>
+
+</resources>

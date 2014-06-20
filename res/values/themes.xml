@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <style name="Theme.SimpleCamera" parent="Theme.AppCompat.Light">
+    <item name="scButtonSwitchCameraStyle">@style/Widget.SimpleCamera.Button.SwitchCamera</item>
+    <item name="scButtonTakePictureStyle">@style/Widget.SimpleCamera.Button.TakePicture</item>
+    <item name="scButtonRecordVideoStyle">@style/Widget.SimpleCamera.Button.RecordVideo</item>
+    <item name="scButtonStopRecordingStyle">@style/Widget.SimpleCamera.Button.StopRecording</item>
+    <item name="scButtonAcceptStyle">@style/Widget.SimpleCamera.Button.Accept</item>
+    <item name="scButtonRejectStyle">@style/Widget.SimpleCamera.Button.Reject</item>
+  </style>
+  
+</resources>
