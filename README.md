@@ -43,27 +43,29 @@ Also, a `build(Context, Class)` and `startForResult(Activity, Class, int)` are a
 ####Example
 __MyActivity.java__
 
-    public class MyActivity extends Activity {
-    
-    	public static final int PICTURE_CODE = 1337;
-    
-    	// Left out framework callbacks and other stuff for readability
-    
-        public void onClick(View view) {
-            
-            new SimpleCameraActivity.Builder()
-                    .frontFacingCamera(false)
-                    .size(SimpleCameraFragment.Size.AVATAR)
-                    .startForResult(this, PICTURE_CODE);
-        }
-        
-        @Override
-        public void onActivityResult(int requestCode, int resultCode, Intent data) {
+```java
+public class MyActivity extends Activity {
 
-            // We'll need this, keep on reading...
-        }
+	public static final int PICTURE_CODE = 1337;
+
+	// Left out framework callbacks and other stuff for readability
+
+    public void onClick(View view) {
+        
+        new SimpleCameraActivity.Builder()
+                .frontFacingCamera(false)
+                .size(SimpleCameraFragment.Size.AVATAR)
+                .startForResult(this, PICTURE_CODE);
     }
     
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        // We'll need this, keep on reading...
+    }
+}
+```
+
 ###Or via an Intent
 The following snippet creates a new Intent for `SimpleCameraActivity`. It chooses the back facing camera, selects the 
 `Size.NORMAL` and gives the app cache directory as directory location and an earlier set filename.
@@ -91,70 +93,74 @@ Default: `Size.NORMAL`
 ####Example
 __MyActivity.java__
 
-    public class MyActivity extends Activity {
-    
-    	public static final int PICTURE_CODE = 1337;
-    
-    	// Left out framework callbacks and other stuff for readability
-    
-        public void onClick(View view) {
-            
-            Intent simpleCameraIntent = new Intent(context, SimpleCameraActivity.class)
-                    .putExtra(EXTRA_START_WITH_FRONT_FACING_CAMERA, frontFacingCamera)
-                    .putExtra(EXTRA_DIR, dir.getPath())
-                    .putExtra(EXTRA_FILENAME, fileName)
-                    .putExtra(EXTRA_SIZE, SimpleCameraFragment.Size.NORMAL.ordinal());
-        }
-        
-        @Override
-        public void onActivityResult(int requestCode, int resultCode, Intent data) {
+```java
+public class MyActivity extends Activity {
 
-            // We'll need this, keep on reading...
-        }
+	public static final int PICTURE_CODE = 1337;
+
+	// Left out framework callbacks and other stuff for readability
+
+    public void onClick(View view) {
+        
+        Intent simpleCameraIntent = new Intent(context, SimpleCameraActivity.class)
+                .putExtra(EXTRA_START_WITH_FRONT_FACING_CAMERA, frontFacingCamera)
+                .putExtra(EXTRA_DIR, dir.getPath())
+                .putExtra(EXTRA_FILENAME, fileName)
+                .putExtra(EXTRA_SIZE, SimpleCameraFragment.Size.NORMAL.ordinal());
     }
     
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        // We'll need this, keep on reading...
+    }
+}
+```
+
 ###Handle the result in onActivityResult()
 
 __MyActivity.java__
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+```java
+@Override
+public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        switch (requestCode) {
-            case PICTURE_CODE:
+    switch (requestCode) {
+        case PICTURE_CODE:
 
-                switch (resultCode) {
+            switch (resultCode) {
 
-                    case SimpleCameraActivity.RESULT_CODE_ACCEPTED:
+                case SimpleCameraActivity.RESULT_CODE_ACCEPTED:
 
-                        // Hurray! The image / video was taken by the user and succesfully saved to the given location
-                        // You can find the location using data.getStringExtra(SimpleCameraActivity.EXTRA_FILENAME)
+                    // Hurray! The image / video was taken by the user and succesfully saved to the given location
+                    // You can find the location using data.getStringExtra(SimpleCameraActivity.EXTRA_FILENAME)
 
-                        break;
+                    break;
 
-                    case SimpleCameraActivity.RESULT_CODE_CANCELLED: // fall through allowed, has same message
-                    case SimpleCameraActivity.RESULT_CODE_REJECTED:
-                        
-                        // The user was not satisfied, or did not want to take photo after all.
-                        // You could display a message that taking the photo / video was cancelled
-                        
-                        break;
+                case SimpleCameraActivity.RESULT_CODE_CANCELLED: // fall through allowed, has same message
+                case SimpleCameraActivity.RESULT_CODE_REJECTED:
+                    
+                    // The user was not satisfied, or did not want to take photo after all.
+                    // You could display a message that taking the photo / video was cancelled
+                    
+                    break;
 
-                    case SimpleCameraActivity.RESULT_CODE_ERROR:
-                        
-                        // Oh snap! Something went wrong! The photo / video is not saved, if it was taken by the user
-                        
-                        break;
+                case SimpleCameraActivity.RESULT_CODE_ERROR:
+                    
+                    // Oh snap! Something went wrong! The photo / video is not saved, if it was taken by the user
+                    
+                    break;
 
-                    default:
-                        // Meh, the CameraActivity did not invoke setResult(). Please report that with the reason as an issue on GitHub :)
-                }
+                default:
+                    // Meh, the CameraActivity did not invoke setResult(). Please report that with the reason as an issue on GitHub :)
+            }
 
-                break;
-            default:
-                Log.d(TAG, "Unknown request code: " + requestCode + ". Expected " + requestCode);
-        }
+            break;
+        default:
+            Log.d(TAG, "Unknown request code: " + requestCode + ". Expected " + requestCode);
     }
+}
+```
 
 Some notes:
 
@@ -179,18 +185,20 @@ Don't forget to set the theme in your manifest:
 __manifest.xml__
 This is a part of the manifest. See the snippet at the top of the blog article for the complete manifest.
 
-    <manifest xmlns:android="http://schemas.android.com/apk/res/android" >
+```xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" >
 
-      <application android:icon="@drawable/ic_launcher" android:label="Your app">
+  <application android:icon="@drawable/ic_launcher" android:label="Your app">
 
-        <!-- ... -->
+    <!-- ... -->
 
-        <activity android:name=".ui.activity.CameraActivity"
-                  android:icon="@drawable/ic_logo_team_up"
-                  android:theme="@style/Theme.SimpleCamera"/>
+    <activity android:name=".ui.activity.CameraActivity"
+              android:icon="@drawable/ic_logo_team_up"
+              android:theme="@style/Theme.SimpleCamera"/>
 
-      </application>
-    </manifest>
+  </application>
+</manifest>
+```
 
 ## Prerequisites
 
@@ -256,10 +264,10 @@ mvn clean install
 In your POM, add this library as a dependency. Note to add it as an `apklib`.
 
 ```bash
-    <dependency>
-      <groupId>com.askcs</groupId>
-      <artifactId>simple-camera</artifactId>
-      <version>0.1-snapshot</version>
-      <type>apklib</type>
-    </dependency>
+<dependency>
+  <groupId>com.askcs</groupId>
+  <artifactId>simple-camera</artifactId>
+  <version>0.1-snapshot</version>
+  <type>apklib</type>
+</dependency>
 ```
