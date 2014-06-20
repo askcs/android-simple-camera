@@ -5,7 +5,7 @@ For our app [TeamUp](https://teamup.ask-cs.com), we needed complete control over
 privacy requirement. An implementation on top of the [`cwac-camera`](https://github.com/commonsguy/cwac-camera) library,
 created by [Mark Murphy](www.commonsware.org). 
 
-You can also read the blogpost, with a more tutorial like example.
+You can also read the [https://github.com/askcs/android-simple-camera](blog post), with a more tutorial like example.
 
 ##Usage
 
