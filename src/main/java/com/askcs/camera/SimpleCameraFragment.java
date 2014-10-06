@@ -13,7 +13,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.*;
 import android.widget.*;
-import com.askcs.R;
+import com.askcs.simple_camera.R;
 import com.commonsware.cwac.camera.CameraUtils;
 import com.commonsware.cwac.camera.PictureTransaction;
 import com.commonsware.cwac.camera.SimpleCameraHost;
@@ -152,7 +152,7 @@ public class SimpleCameraFragment extends com.commonsware.cwac.camera.CameraFrag
 
         FrameLayout root = (FrameLayout) inflater.inflate(R.layout.sc_camera_fragment, null);
 
-        ((FrameLayout) root.findViewById(R.id.camera_container)).addView(view);
+        ((FrameLayout) root.findViewById(R.id.sc_camera_container)).addView(view);
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,7 +163,7 @@ public class SimpleCameraFragment extends com.commonsware.cwac.camera.CameraFrag
             }
         });
 
-        btnTakePicture = (ImageButton) root.findViewById(R.id.btn_take_picture);
+        btnTakePicture = (ImageButton) root.findViewById(R.id.sc_btn_take_picture);
         btnTakePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -171,7 +171,7 @@ public class SimpleCameraFragment extends com.commonsware.cwac.camera.CameraFrag
             }
         });
 
-        btnSwitchCamera = (ImageButton) root.findViewById(R.id.btn_flip_camera);
+        btnSwitchCamera = (ImageButton) root.findViewById(R.id.sc_btn_flip_camera);
         btnSwitchCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -179,7 +179,7 @@ public class SimpleCameraFragment extends com.commonsware.cwac.camera.CameraFrag
             }
         });
 
-        btnRecordVideo = (ImageButton) root.findViewById(R.id.btn_record_video);
+        btnRecordVideo = (ImageButton) root.findViewById(R.id.sc_btn_record_video);
         btnRecordVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -187,7 +187,7 @@ public class SimpleCameraFragment extends com.commonsware.cwac.camera.CameraFrag
             }
         });
 
-        btnStopRecordingVideo = (ImageButton) root.findViewById(R.id.btn_stop_recording_video);
+        btnStopRecordingVideo = (ImageButton) root.findViewById(R.id.sc_btn_stop_recording_video);
         btnStopRecordingVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

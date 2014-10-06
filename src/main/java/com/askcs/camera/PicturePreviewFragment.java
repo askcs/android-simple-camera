@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import com.askcs.R;
+import com.askcs.simple_camera.R;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import uk.co.senab.photoview.PhotoView;
@@ -46,9 +46,9 @@ import java.io.File;
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        photoView = (PhotoView) view.findViewById(R.id.photo);
+        photoView = (PhotoView) view.findViewById(R.id.sc_photo);
 
-        btnAccept = (ImageButton) view.findViewById(R.id.btn_accept);
+        btnAccept = (ImageButton) view.findViewById(R.id.sc_btn_accept);
         btnAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,7 +56,7 @@ import java.io.File;
             }
         });
 
-        btnReject = (ImageButton) view.findViewById(R.id.btn_reject);
+        btnReject = (ImageButton) view.findViewById(R.id.sc_btn_reject);
         btnReject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

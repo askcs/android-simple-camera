@@ -6,7 +6,7 @@
   android:background="@color/sc_background">
 
   <FrameLayout
-    android:id="@+id/camera_container"
+    android:id="@+id/sc_camera_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"/>
 
@@ -18,22 +18,30 @@
     >
 
     <ImageButton
-      android:id="@+id/btn_flip_camera"
+      android:id="@+id/sc_btn_flip_camera"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
       style="?attr/scButtonSwitchCameraStyle"
       />
 
     <ImageButton
-      android:id="@+id/btn_take_picture"
+      android:id="@+id/sc_btn_take_picture"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
       style="?attr/scButtonTakePictureStyle"
       />
 
     <ImageButton
-      android:id="@+id/btn_record_video"
+      android:id="@+id/sc_btn_record_video"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
       style="?attr/scButtonRecordVideoStyle"
       />
 
     <ImageButton
-      android:id="@+id/btn_stop_recording_video"
+      android:id="@+id/sc_btn_stop_recording_video"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
       style="?attr/scButtonStopRecordingStyle"
       />
 

@@ -17,7 +17,7 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.Window;
 import android.widget.Toast;
-import com.askcs.R;
+import com.askcs.simple_camera.R;
 
 import java.io.File;
 import java.util.UUID;
@@ -85,7 +85,7 @@ public class SimpleCameraActivity extends ActionBarActivity implements SimpleCam
                 intent.getStringExtra(EXTRA_FILENAME),
                 SimpleCameraFragment.Size.tryOrdinal(intent.getIntExtra(EXTRA_SIZE, SimpleCameraFragment.Size.NORMAL.ordinal())));
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.camera_container, current).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.sc_camera_container, current).commit();
     }
 
     @Override
@@ -121,7 +121,7 @@ public class SimpleCameraActivity extends ActionBarActivity implements SimpleCam
 
         picturePreviewFragment = PicturePreviewFragment.newInstance(photo);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.camera_container, picturePreviewFragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.sc_camera_container, picturePreviewFragment).commit();
     }
 
     @Override

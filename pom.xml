@@ -7,7 +7,7 @@
   <groupId>com.askcs</groupId>
   <artifactId>android-simple-camera</artifactId>
   <version>0.1-snapshot</version>
-  <packaging>aar</packaging>
+  <packaging>apklib</packaging>
   <name>android-simple-camera</name>
 
   <organization>
