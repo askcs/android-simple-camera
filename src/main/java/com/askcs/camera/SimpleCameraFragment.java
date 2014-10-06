@@ -360,8 +360,6 @@ public class SimpleCameraFragment extends com.commonsware.cwac.camera.CameraFrag
                             }
                         });
 
-                        rootView.addView(qualityBar);
-
                         return new AlertDialog.Builder(getActivity())
                                 .setTitle("Image quality: " + jpegQuality + "%")
                                 .setView(rootView)
