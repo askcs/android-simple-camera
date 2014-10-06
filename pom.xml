@@ -29,7 +29,7 @@
     <android.plugin.version>3.8.0</android.plugin.version>
     <compatibility.version>19.1.0</compatibility.version>
     <photoview.version>1.2.2</photoview.version>
-    <picasso.version>2.1.1</picasso.version>
+    <picasso.version>2.3.4</picasso.version>
 
   </properties>
 
