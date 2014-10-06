@@ -266,7 +266,7 @@ In your POM, add this library as a dependency. Note to add it as an `apklib`.
 ```bash
 <dependency>
   <groupId>com.askcs</groupId>
-  <artifactId>simple-camera</artifactId>
+  <artifactId>android-simple-camera</artifactId>
   <version>0.1-snapshot</version>
   <type>apklib</type>
 </dependency>
