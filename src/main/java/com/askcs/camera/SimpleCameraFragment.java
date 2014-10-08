@@ -15,6 +15,7 @@ import android.view.*;
 import android.widget.*;
 import com.askcs.simple_camera.R;
 import com.commonsware.cwac.camera.CameraUtils;
+import com.commonsware.cwac.camera.CameraView;
 import com.commonsware.cwac.camera.PictureTransaction;
 import com.commonsware.cwac.camera.SimpleCameraHost;
 
@@ -59,21 +60,23 @@ public class SimpleCameraFragment extends com.commonsware.cwac.camera.CameraFrag
 
         void onVideoRecorded(File video);
 
-        void startSwitchingCamera();
+        void startSwitchingCamera(boolean currentlyFront);
 
         void changeCameraContainerSize(int width, int height);
     }
 
     public static SimpleCameraFragment newInstance(
             boolean startWithFrontFacingCamera,
+            boolean camIsSwitchable,
             File directory,
             String location,
             Size pictureSize) {
 
         SimpleCameraFragment fragment = new SimpleCameraFragment();
 
-        Bundle args = new Bundle(4);
+        Bundle args = new Bundle(5);
         args.putBoolean(KEY_USE_FFC, startWithFrontFacingCamera);
+        args.putBoolean(KEY_CAM_SWITCHABLE, camIsSwitchable);
         args.putString(KEY_FILE_DIR, directory == null ? null : directory.getPath());
         args.putString(KEY_FILE_NAME, location != null ? location : UUID.randomUUID().toString());
         args.putInt(KEY_PICTURE_SIZE, pictureSize.ordinal());
@@ -103,6 +106,7 @@ public class SimpleCameraFragment extends com.commonsware.cwac.camera.CameraFrag
     }
 
     public static final String KEY_USE_FFC = "com.askcs.teamup.ui.fragment.CameraFragment.USE_FFC";
+    public static final String KEY_CAM_SWITCHABLE = "com.askcs.teamup.ui.fragment.CameraFragment.CAM_IS_SWITCHABLE";
     public static final String KEY_FILE_DIR = "com.askcs.teamup.ui.fragment.CameraFragment.FILE_DIR";
     public static final String KEY_FILE_NAME = "com.askcs.teamup.ui.fragment.CameraFragment.EXTRA_FILENAME";
     public static final String KEY_PICTURE_SIZE = "com.askcs.teamup.ui.fragment.CameraFragment.PICTURE_SIZE";
@@ -111,6 +115,7 @@ public class SimpleCameraFragment extends com.commonsware.cwac.camera.CameraFrag
     private String flashMode = null;
 
     private boolean useFrontFacingCamera;
+    private boolean canSwitchCamera;
     private boolean autoFocusAvailable;
     private File finalFile;
     private File dir;
@@ -134,6 +139,7 @@ public class SimpleCameraFragment extends com.commonsware.cwac.camera.CameraFrag
         fileName = getArguments().getString(KEY_FILE_NAME);
         imageSize = Size.tryOrdinal(getArguments().getInt(KEY_PICTURE_SIZE, 0));
         useFrontFacingCamera = getArguments().getBoolean(KEY_USE_FFC);
+        canSwitchCamera = getArguments().getBoolean(KEY_CAM_SWITCHABLE);
 
         dir = TextUtils.isEmpty(dirString) ? getActivity().getCacheDir() : new File(dirString);
 
@@ -216,12 +222,16 @@ public class SimpleCameraFragment extends com.commonsware.cwac.camera.CameraFrag
 
     void onSwitchCameraClick() {
 
+        // Disable functions to prevent issues during fragment replacement
         btnTakePicture.setEnabled(false);
         btnSwitchCamera.setEnabled(false);
         btnRecordVideo.setEnabled(false);
         btnStopRecordingVideo.setEnabled(false);
 
-        // TODO
+        // Tell the parent activity to replace this fragment by the one with the 'different' camera view
+        // If current is front, change to back. If current is back, change to front.
+        ((SimpleCameraActivity) getActivity()).startSwitchingCamera( useFrontFacingCamera );
+
     }
 
     void onRecordVideoClick() {
@@ -270,9 +280,17 @@ public class SimpleCameraFragment extends com.commonsware.cwac.camera.CameraFrag
             btnRecordVideo.setEnabled(false);
         }
 
+        // Check if we have to show the switch camera button
         if (btnSwitchCamera != null) {
-            btnSwitchCamera.setVisibility(GONE);
-            btnSwitchCamera.setEnabled(false);
+
+            if(canSwitchCamera) {
+                btnSwitchCamera.setVisibility(VISIBLE);
+                btnSwitchCamera.setEnabled(true);
+            } else {
+                btnSwitchCamera.setVisibility(GONE);
+                btnSwitchCamera.setEnabled(false);
+            }
+
         }
 
         if (btnStopRecordingVideo != null) {

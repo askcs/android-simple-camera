@@ -47,6 +47,7 @@ public class SimpleCameraActivity extends ActionBarActivity implements SimpleCam
     private static final String STATE_CAMERA_ID = "camera_id";
 
     public static final String EXTRA_START_WITH_FRONT_FACING_CAMERA = "start_with_front_facing_camera";
+    public static final String EXTRA_CAMERA_SWITCHABLE = "camera_is_switchable";
     public static final String EXTRA_DIR = "dir";
     public static final String EXTRA_FILENAME = "filename";
     public static final String EXTRA_ERROR = "extra_error";
@@ -81,6 +82,7 @@ public class SimpleCameraActivity extends ActionBarActivity implements SimpleCam
 
         current = SimpleCameraFragment.newInstance(
                 intent.getBooleanExtra(EXTRA_START_WITH_FRONT_FACING_CAMERA, false),
+                intent.getBooleanExtra(EXTRA_CAMERA_SWITCHABLE, false),
                 intent.getStringExtra(EXTRA_DIR) == null ? null : new File(intent.getStringExtra(EXTRA_DIR)),
                 intent.getStringExtra(EXTRA_FILENAME),
                 SimpleCameraFragment.Size.tryOrdinal(intent.getIntExtra(EXTRA_SIZE, SimpleCameraFragment.Size.NORMAL.ordinal())));
@@ -131,8 +133,30 @@ public class SimpleCameraActivity extends ActionBarActivity implements SimpleCam
     }
 
     @Override
-    public void startSwitchingCamera() {
-        // TODO
+    public void startSwitchingCamera(boolean currentlyFront) {
+
+        // Rebuild the SimpleCameraFragment with the same intent extra values (as in onCreate)
+        // All parameters except the useCamFront is changed;
+        // Tt's based on the current used camera, and then uses the other once (flip/switch cam)
+
+        Intent intent = getIntent();
+
+        // Determine which camera to use now
+        boolean camFront = true;
+        if(currentlyFront){
+            camFront = false;
+        }
+
+        current = SimpleCameraFragment.newInstance(
+                camFront,
+                intent.getBooleanExtra(EXTRA_CAMERA_SWITCHABLE, false),
+                intent.getStringExtra(EXTRA_DIR) == null ? null : new File(intent.getStringExtra(EXTRA_DIR)),
+                intent.getStringExtra(EXTRA_FILENAME),
+                SimpleCameraFragment.Size.tryOrdinal(intent.getIntExtra(EXTRA_SIZE, SimpleCameraFragment.Size.NORMAL.ordinal())));
+
+        // Replace the existing fragment with the new (switched camera) one
+        getSupportFragmentManager().beginTransaction().replace(R.id.sc_camera_container, current).commit();
+
     }
 
     @Override
@@ -183,6 +207,7 @@ public class SimpleCameraActivity extends ActionBarActivity implements SimpleCam
 
         private static final String TAG = Builder.class.getSimpleName();
         private boolean frontFacingCamera = false;
+        private boolean cameraSwitchable = false;
         private File dir;
         private String fileName;
         private SimpleCameraFragment.Size size;
@@ -192,6 +217,11 @@ public class SimpleCameraActivity extends ActionBarActivity implements SimpleCam
 
         public Builder frontFacingCamera(boolean ffc) {
             this.frontFacingCamera = ffc;
+            return this;
+        }
+
+        public Builder setCameraSwitchable(boolean cs) {
+            this.cameraSwitchable = cs;
             return this;
         }
 
@@ -231,6 +261,7 @@ public class SimpleCameraActivity extends ActionBarActivity implements SimpleCam
 
             return new Intent(context, cameraActivityClassyClass)
                     .putExtra(EXTRA_START_WITH_FRONT_FACING_CAMERA, frontFacingCamera)
+                    .putExtra(EXTRA_CAMERA_SWITCHABLE, cameraSwitchable)
                     .putExtra(EXTRA_DIR, dir.getPath())
                     .putExtra(EXTRA_FILENAME, fileName)
                     .putExtra(EXTRA_SIZE, size.ordinal());
