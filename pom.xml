@@ -27,7 +27,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <platform.version>4.1.1.4</platform.version>
     <android.plugin.version>3.8.0</android.plugin.version>
-    <compatibility.version>19.1.0</compatibility.version>
+    <compatibility.version>21.0.1</compatibility.version>
     <photoview.version>1.2.2</photoview.version>
     <picasso.version>2.3.4</picasso.version>
 
@@ -102,7 +102,7 @@
           <nativeLibrariesDirectory>${project.basedir}/src/main/native</nativeLibrariesDirectory>
           <sdk>
             <path>${sdk.dir}</path>
-            <platform>17</platform>
+            <platform>21</platform>
           </sdk>
           <undeployBeforeDeploy>true</undeployBeforeDeploy>
         </configuration>
