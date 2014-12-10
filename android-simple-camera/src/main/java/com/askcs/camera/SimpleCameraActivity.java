@@ -19,6 +19,7 @@ import android.view.Window;
 import android.widget.Toast;
 import com.askcs.simple_camera.R;
 
+
 import java.io.File;
 import java.util.UUID;
 

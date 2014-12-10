@@ -29,7 +29,7 @@ import java.util.List;
  * specification. It is the result produced by {@link com.android.mms.exif.ExifReader}.
  *
  * @see com.android.mms.exif.ExifReader
- * @see com.android.mms.exif.IfdData
+ * @see IfdData
  */
 class ExifData {
     private static final String TAG = "ExifData";
@@ -122,7 +122,7 @@ class ExifData {
     }
 
     /**
-     * Returns the {@link com.android.mms.exif.IfdData} object corresponding to a given IFD if it
+     * Returns the {@link IfdData} object corresponding to a given IFD if it
      * exists or null.
      */
     protected IfdData getIfdData(int ifdId) {
@@ -141,7 +141,7 @@ class ExifData {
     }
 
     /**
-     * Returns the {@link com.android.mms.exif.IfdData} object corresponding to a given IFD or
+     * Returns the {@link IfdData} object corresponding to a given IFD or
      * generates one if none exist.
      */
     protected IfdData getOrCreateIfdData(int ifdId) {
@@ -254,7 +254,7 @@ class ExifData {
     }
 
     /**
-     * Returns a list of all {@link com.android.mms.exif.ExifTag}s in the ExifData or null if there
+     * Returns a list of all {@link ExifTag}s in the ExifData or null if there
      * are none.
      */
     protected List<ExifTag> getAllTags() {
@@ -276,7 +276,7 @@ class ExifData {
     }
 
     /**
-     * Returns a list of all {@link com.android.mms.exif.ExifTag}s in a given IFD or null if there
+     * Returns a list of all {@link ExifTag}s in a given IFD or null if there
      * are none.
      */
     protected List<ExifTag> getAllTagsForIfd(int ifd) {
@@ -299,7 +299,7 @@ class ExifData {
     }
 
     /**
-     * Returns a list of all {@link com.android.mms.exif.ExifTag}s with a given TID or null if there
+     * Returns a list of all {@link ExifTag}s with a given TID or null if there
      * are none.
      */
     protected List<ExifTag> getAllTagsForTagId(short tag) {

@@ -23,7 +23,7 @@ import java.util.Map;
  * This class stores all the tags in an IFD.
  *
  * @see com.android.mms.exif.ExifData
- * @see com.android.mms.exif.ExifTag
+ * @see ExifTag
  */
 class IfdData {
 
@@ -38,11 +38,11 @@ class IfdData {
     /**
      * Creates an IfdData with given IFD ID.
      *
-     * @see com.android.mms.exif.IfdId#TYPE_IFD_0
-     * @see com.android.mms.exif.IfdId#TYPE_IFD_1
-     * @see com.android.mms.exif.IfdId#TYPE_IFD_EXIF
-     * @see com.android.mms.exif.IfdId#TYPE_IFD_GPS
-     * @see com.android.mms.exif.IfdId#TYPE_IFD_INTEROPERABILITY
+     * @see IfdId#TYPE_IFD_0
+     * @see IfdId#TYPE_IFD_1
+     * @see IfdId#TYPE_IFD_EXIF
+     * @see IfdId#TYPE_IFD_GPS
+     * @see IfdId#TYPE_IFD_INTEROPERABILITY
      */
     IfdData(int ifdId) {
         mIfdId = ifdId;
@@ -53,7 +53,7 @@ class IfdData {
     }
 
     /**
-     * Get a array the contains all {@link com.android.mms.exif.ExifTag} in this IFD.
+     * Get a array the contains all {@link ExifTag} in this IFD.
      */
     protected ExifTag[] getAllTags() {
         return mExifTags.values().toArray(new ExifTag[mExifTags.size()]);
@@ -62,18 +62,18 @@ class IfdData {
     /**
      * Gets the ID of this IFD.
      *
-     * @see com.android.mms.exif.IfdId#TYPE_IFD_0
-     * @see com.android.mms.exif.IfdId#TYPE_IFD_1
-     * @see com.android.mms.exif.IfdId#TYPE_IFD_EXIF
-     * @see com.android.mms.exif.IfdId#TYPE_IFD_GPS
-     * @see com.android.mms.exif.IfdId#TYPE_IFD_INTEROPERABILITY
+     * @see IfdId#TYPE_IFD_0
+     * @see IfdId#TYPE_IFD_1
+     * @see IfdId#TYPE_IFD_EXIF
+     * @see IfdId#TYPE_IFD_GPS
+     * @see IfdId#TYPE_IFD_INTEROPERABILITY
      */
     protected int getId() {
         return mIfdId;
     }
 
     /**
-     * Gets the {@link com.android.mms.exif.ExifTag} with given tag id. Return null if there is no
+     * Gets the {@link ExifTag} with given tag id. Return null if there is no
      * such tag.
      */
     protected ExifTag getTag(short tagId) {
@@ -81,7 +81,7 @@ class IfdData {
     }
 
     /**
-     * Adds or replaces a {@link com.android.mms.exif.ExifTag}.
+     * Adds or replaces a {@link ExifTag}.
      */
     protected ExifTag setTag(ExifTag tag) {
         tag.setIfd(mIfdId);

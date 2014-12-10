@@ -42,7 +42,7 @@ import java.util.*;
  * definition has information about the type, number of components, and valid
  * IFDs for a tag.
  *
- * @see com.android.mms.exif.ExifTag
+ * @see ExifTag
  */
 public class ExifInterface {
     public static final int TAG_NULL = -1;
@@ -1180,7 +1180,7 @@ public class ExifInterface {
     /**
      * Get the exif tags in this ExifInterface object or null if none exist.
      *
-     * @return a List of {@link com.android.mms.exif.ExifTag}s.
+     * @return a List of {@link ExifTag}s.
      */
     public List<ExifTag> getAllTags() {
         return mData.getAllTags();
@@ -1195,7 +1195,7 @@ public class ExifInterface {
      *         a TID as defined in the exif standard (or with
      *         {@link #defineTag}).
      *
-     * @return a List of {@link com.android.mms.exif.ExifTag}s.
+     * @return a List of {@link ExifTag}s.
      */
     public List<ExifTag> getTagsForTagId(short tagId) {
         return mData.getAllTagsForTagId(tagId);
@@ -1210,7 +1210,7 @@ public class ExifInterface {
      *         an IFD as defined in the exif standard (or with
      *         {@link #defineTag}).
      *
-     * @return a List of {@link com.android.mms.exif.ExifTag}s.
+     * @return a List of {@link ExifTag}s.
      */
     public List<ExifTag> getTagsForIfdId(int ifdId) {
         return mData.getAllTagsForIfd(ifdId);
@@ -1235,7 +1235,7 @@ public class ExifInterface {
      * @param tagId
      *         a defined tag constant, e.g. {@link #TAG_IMAGE_WIDTH}.
      *
-     * @return an {@link com.android.mms.exif.ExifTag} or null if none exists.
+     * @return an {@link ExifTag} or null if none exists.
      */
     public ExifTag getTag(int tagId) {
         int ifdId = getDefinedTagDefaultIfd(tagId);
@@ -1466,7 +1466,7 @@ public class ExifInterface {
      * @param tagId
      *         a defined tag constant, e.g. {@link #TAG_IMAGE_WIDTH}.
      *
-     * @return the number of elements or {@link com.android.mms.exif.ExifTag#SIZE_UNDEFINED} if the
+     * @return the number of elements or {@link ExifTag#SIZE_UNDEFINED} if the
      * tag or the number of elements is not defined.
      */
     public int getDefinedTagCount(int tagId) {
@@ -1522,7 +1522,7 @@ public class ExifInterface {
      *
      * @return the type.
      *
-     * @see com.android.mms.exif.ExifTag#getDataType()
+     * @see ExifTag#getDataType()
      */
     public short getDefinedTagType(int tagId) {
         int info = getTagInfo().get(tagId);
@@ -1552,7 +1552,7 @@ public class ExifInterface {
     /**
      * Creates a tag for a defined tag constant in a given IFD if that IFD is
      * allowed for the tag.  This method will fail anytime the appropriate
-     * {@link com.android.mms.exif.ExifTag#setValue} for this tag's datatype would fail.
+     * {@link ExifTag#setValue} for this tag's datatype would fail.
      *
      * @param tagId
      *         a tag constant, e.g. {@link #TAG_IMAGE_WIDTH}.
@@ -1715,7 +1715,7 @@ public class ExifInterface {
      * @param defaultIfd
      *         the default IFD for the tag.
      * @param tagType
-     *         the type of the tag (see {@link com.android.mms.exif.ExifTag#getDataType()}).
+     *         the type of the tag (see {@link ExifTag#getDataType()}).
      * @param defaultComponentCount
      *         the number of elements of this tag's type in
      *         the tags value.

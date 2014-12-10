@@ -23,7 +23,7 @@ import java.io.InputStream;
 
 /**
  * This class reads the EXIF header of a JPEG file and stores it in
- * {@link com.android.mms.exif.ExifData}.
+ * {@link ExifData}.
  */
 class ExifReader {
     private static final String TAG = "ExifReader";
@@ -36,7 +36,7 @@ class ExifReader {
 
     /**
      * Parses the inputStream and and returns the EXIF data in an
-     * {@link com.android.mms.exif.ExifData}.
+     * {@link ExifData}.
      *
      * @throws com.android.mms.exif.ExifInvalidFormatException
      * @throws java.io.IOException

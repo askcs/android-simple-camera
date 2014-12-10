@@ -153,11 +153,11 @@ public class ExifTag {
     /**
      * Returns the ID of the IFD this tag belongs to.
      *
-     * @see com.android.mms.exif.IfdId#TYPE_IFD_0
-     * @see com.android.mms.exif.IfdId#TYPE_IFD_1
-     * @see com.android.mms.exif.IfdId#TYPE_IFD_EXIF
-     * @see com.android.mms.exif.IfdId#TYPE_IFD_GPS
-     * @see com.android.mms.exif.IfdId#TYPE_IFD_INTEROPERABILITY
+     * @see IfdId#TYPE_IFD_0
+     * @see IfdId#TYPE_IFD_1
+     * @see IfdId#TYPE_IFD_EXIF
+     * @see IfdId#TYPE_IFD_GPS
+     * @see IfdId#TYPE_IFD_INTEROPERABILITY
      */
     public int getIfd() {
         return mIfd;

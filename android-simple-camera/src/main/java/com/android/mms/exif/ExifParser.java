@@ -81,7 +81,7 @@ public class ExifParser {
     public static final int EVENT_NEW_TAG = 1;
     /**
      * When the parser reaches the value area of tag that is registered by
-     * {@link #registerForTagValue(com.android.mms.exif.ExifTag)} previously. Call {@link #getTag()}
+     * {@link #registerForTagValue(ExifTag)} previously. Call {@link #getTag()}
      * to get the corresponding tag.
      */
     public static final int EVENT_VALUE_OF_REGISTERED_TAG = 2;
@@ -419,8 +419,8 @@ public class ExifParser {
      * <p>
      * For {@link #EVENT_NEW_TAG}, the tag may not contain the value if the size
      * of the value is greater than 4 bytes. One should call
-     * {@link com.android.mms.exif.ExifTag#hasValue()} to check if the tag contains value. If there
-     * is no value,call {@link #registerForTagValue(com.android.mms.exif.ExifTag)} to have the parser
+     * {@link ExifTag#hasValue()} to check if the tag contains value. If there
+     * is no value,call {@link #registerForTagValue(ExifTag)} to have the parser
      * emit {@link #EVENT_VALUE_OF_REGISTERED_TAG} when it reaches the area
      * pointed by the offset.
      * <p>
@@ -428,7 +428,7 @@ public class ExifParser {
      * tag will have already been read except for tags of undefined type. For
      * tags of undefined type, call one of the read methods to get the value.
      *
-     * @see #registerForTagValue(com.android.mms.exif.ExifTag)
+     * @see #registerForTagValue(ExifTag)
      * @see #read(byte[])
      * @see #read(byte[], int, int)
      * @see #readLong()
@@ -450,11 +450,11 @@ public class ExifParser {
     /**
      * Gets the ID of current IFD.
      *
-     * @see com.android.mms.exif.IfdId#TYPE_IFD_0
-     * @see com.android.mms.exif.IfdId#TYPE_IFD_1
-     * @see com.android.mms.exif.IfdId#TYPE_IFD_GPS
-     * @see com.android.mms.exif.IfdId#TYPE_IFD_INTEROPERABILITY
-     * @see com.android.mms.exif.IfdId#TYPE_IFD_EXIF
+     * @see IfdId#TYPE_IFD_0
+     * @see IfdId#TYPE_IFD_1
+     * @see IfdId#TYPE_IFD_GPS
+     * @see IfdId#TYPE_IFD_INTEROPERABILITY
+     * @see IfdId#TYPE_IFD_EXIF
      */
     protected int getCurrentIfd() {
         return mIfdType;
@@ -833,7 +833,7 @@ public class ExifParser {
     /**
      * Reads a String from the InputStream with US-ASCII charset. The parser
      * will read n bytes and convert it to ascii string. This is used for
-     * reading values of type {@link com.android.mms.exif.ExifTag#TYPE_ASCII}.
+     * reading values of type {@link ExifTag#TYPE_ASCII}.
      */
     protected String readString(int n) throws IOException {
         return readString(n, US_ASCII);
@@ -842,7 +842,7 @@ public class ExifParser {
     /**
      * Reads a String from the InputStream with the given charset. The parser
      * will read n bytes and convert it to string. This is used for reading
-     * values of type {@link com.android.mms.exif.ExifTag#TYPE_ASCII}.
+     * values of type {@link ExifTag#TYPE_ASCII}.
      */
     protected String readString(int n, Charset charset) throws IOException {
         if (n > 0) {
@@ -854,7 +854,7 @@ public class ExifParser {
     }
 
     /**
-     * Reads value of type {@link com.android.mms.exif.ExifTag#TYPE_UNSIGNED_SHORT} from the
+     * Reads value of type {@link ExifTag#TYPE_UNSIGNED_SHORT} from the
      * InputStream.
      */
     protected int readUnsignedShort() throws IOException {
@@ -862,7 +862,7 @@ public class ExifParser {
     }
 
     /**
-     * Reads value of type {@link com.android.mms.exif.ExifTag#TYPE_UNSIGNED_LONG} from the
+     * Reads value of type {@link ExifTag#TYPE_UNSIGNED_LONG} from the
      * InputStream.
      */
     protected long readUnsignedLong() throws IOException {
@@ -870,7 +870,7 @@ public class ExifParser {
     }
 
     /**
-     * Reads value of type {@link com.android.mms.exif.ExifTag#TYPE_UNSIGNED_RATIONAL} from the
+     * Reads value of type {@link ExifTag#TYPE_UNSIGNED_RATIONAL} from the
      * InputStream.
      */
     protected Rational readUnsignedRational() throws IOException {
@@ -880,14 +880,14 @@ public class ExifParser {
     }
 
     /**
-     * Reads value of type {@link com.android.mms.exif.ExifTag#TYPE_LONG} from the InputStream.
+     * Reads value of type {@link ExifTag#TYPE_LONG} from the InputStream.
      */
     protected int readLong() throws IOException {
         return mTiffStream.readInt();
     }
 
     /**
-     * Reads value of type {@link com.android.mms.exif.ExifTag#TYPE_RATIONAL} from the InputStream.
+     * Reads value of type {@link ExifTag#TYPE_RATIONAL} from the InputStream.
      */
     protected Rational readRational() throws IOException {
         int nomi = readLong();
