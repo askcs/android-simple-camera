@@ -11,32 +11,32 @@
 
   <style name="Widget.SimpleCamera.Button.TakePicture">
     <item name="android:background">@drawable/sc_rectangle_rounded_positive</item>
-    <item name="android:src">@drawable/ic_camera</item>
+    <item name="android:src">@drawable/sc_ic_camera</item>
   </style>
 
   <style name="Widget.SimpleCamera.Button.RecordVideo">
     <item name="android:background">@drawable/sc_rectangle_rounded_neutral</item>
-    <item name="android:src">@drawable/ic_video</item>
+    <item name="android:src">@drawable/sc_ic_video</item>
   </style>
 
   <style name="Widget.SimpleCamera.Button.StopRecording">
     <item name="android:background">@drawable/sc_rectangle_rounded_negative</item>
-    <item name="android:src">@drawable/ic_stop</item>
+    <item name="android:src">@drawable/sc_ic_stop</item>
   </style>
 
   <style name="Widget.SimpleCamera.Button.SwitchCamera">
     <item name="android:background">@drawable/sc_rectangle_rounded_neutral</item>
-    <item name="android:src">@drawable/ic_camera_switch</item>
+    <item name="android:src">@drawable/sc_ic_camera_switch</item>
   </style>
 
   <style name="Widget.SimpleCamera.Button.Reject">
     <item name="android:background">@drawable/sc_rectangle_rounded_negative</item>
-    <item name="android:src">@drawable/ic_action_cancel</item>
+    <item name="android:src">@drawable/sc_ic_action_cancel</item>
   </style>
 
   <style name="Widget.SimpleCamera.Button.Accept">
     <item name="android:background">@drawable/sc_rectangle_rounded_positive</item>
-    <item name="android:src">@drawable/ic_action_accept</item>
+    <item name="android:src">@drawable/sc_ic_action_accept</item>
   </style>
 
 </resources>
