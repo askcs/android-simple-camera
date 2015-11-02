@@ -5,9 +5,30 @@ For our app [TeamUp](https://teamup.ask-cs.com), we needed complete control over
 privacy requirement. An implementation on top of the [`cwac-camera`](https://github.com/commonsguy/cwac-camera) library,
 created by [Mark Murphy](www.commonsware.org). 
 
-You can also read the [https://github.com/askcs/android-simple-camera](blog post), with a more tutorial like example.
+You can also read the [blog post](http://blog.ask-cs.com/using-camera-in-teamup-for-android/), with a more tutorial like example.
 
 ##Usage
+
+To add this lib as a dependency:
+
+- Pull this repository to tyou local machine `git clone https://github.com/askcs/android-simple-camera`
+- Install the project into your local repository (assuming you have a repository) `gradlew install`. The project is build and uploaded to your local repository.
+- Use the project as a dependency
+
+Gradle
+
+`compile 'com.askcs:android-simple-camera:1.2-snapshot'`
+
+Maven
+
+```
+<dependency>
+  <groupId>com.askcs</groupId>
+  <artifactId>android-simple-camera</artifactId>
+  <version>(insert latest version)</version>
+  <type>apklib</type>
+</dependency>
+```
 
 This implementation is built around the [`CameraFragment`](https://github.com/commonsguy/cwac-camera/blob/master/camera/src/com/commonsware/cwac/camera/CameraFragment.java).
 The CameraFragment is wrapped in an Activity, together with a Builder class, that only reveals a couple of the options
