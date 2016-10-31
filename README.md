@@ -34,6 +34,26 @@ This implementation is built around the [`CameraFragment`](https://github.com/co
 The CameraFragment is wrapped in an Activity, together with a Builder class, that only reveals a couple of the options
 of the SimpleCameraHost. This is done to keep it simple.
 
+### Request Camera and Mirophone Permissions
+If your project is targeting API 23+ or will be used on such devices, you have to request these permissions from the user.
+
+Before using the library, make sure you have the appropriate permissions. You can do this anywhere in your application _before_ accessing the camera.
+
+####Example:
+```
+/* ... */
+static final int PERMISSION_REQUEST_CODE = 1;
+boolean requestPermissions = false;
+String[] permissions = new String[]{Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO};
+for(String s : permissions)
+	if(ContextCompat.checkSelfPermission(this, s) != PackageManager.PERMISSION_GRANTED)
+		requestPermissions = true;
+if(requestPermissions)
+	ActivityCompat.requestPermissions(this, permissions, PERMISSIONS_REQUEST_CODE);
+```
+
+You should also check whether the user has consented to the request. See https://developer.android.com/training/permissions/requesting.html for further details.
+
 ###Using the Builder class
 The following snippet creates a new `SimpleCameraActivity.Buidler` object, chooses the back facing camera, selects the 
 `Size.AVATAR` and gives no location. If no location is given, the picture will be saved in the cache folder of your app. 
