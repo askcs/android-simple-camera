@@ -5,13 +5,54 @@ For our app [TeamUp](https://teamup.ask-cs.com), we needed complete control over
 privacy requirement. An implementation on top of the [`cwac-camera`](https://github.com/commonsguy/cwac-camera) library,
 created by [Mark Murphy](www.commonsware.org). 
 
-You can also read the [https://github.com/askcs/android-simple-camera](blog post), with a more tutorial like example.
+You can also read the [blog post](http://blog.ask-cs.com/using-camera-in-teamup-for-android/), with a more tutorial like example.
 
 ##Usage
+
+To add this lib as a dependency:
+
+- Pull this repository to tyou local machine `git clone https://github.com/askcs/android-simple-camera`
+- Install the project into your local repository (assuming you have a repository) `gradlew install`. The project is build and uploaded to your local repository.
+- Use the project as a dependency
+
+Gradle
+
+`compile 'com.askcs:android-simple-camera:1.2-snapshot'`
+
+Maven
+
+```
+<dependency>
+  <groupId>com.askcs</groupId>
+  <artifactId>android-simple-camera</artifactId>
+  <version>(insert latest version)</version>
+  <type>apklib</type>
+</dependency>
+```
 
 This implementation is built around the [`CameraFragment`](https://github.com/commonsguy/cwac-camera/blob/master/camera/src/com/commonsware/cwac/camera/CameraFragment.java).
 The CameraFragment is wrapped in an Activity, together with a Builder class, that only reveals a couple of the options
 of the SimpleCameraHost. This is done to keep it simple.
+
+### Request Camera and Mirophone Permissions
+If your project is targeting API 23+ or will be used on such devices, you have to request these permissions from the user.
+
+Before using the library, make sure you have the appropriate permissions. You can do this anywhere in your application _before_ accessing the camera.
+
+####Example:
+```
+/* ... */
+static final int PERMISSION_REQUEST_CODE = 1;
+boolean requestPermissions = false;
+String[] permissions = new String[]{Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO};
+for(String s : permissions)
+	if(ContextCompat.checkSelfPermission(this, s) != PackageManager.PERMISSION_GRANTED)
+		requestPermissions = true;
+if(requestPermissions)
+	ActivityCompat.requestPermissions(this, permissions, PERMISSIONS_REQUEST_CODE);
+```
+
+You should also check whether the user has consented to the request. See https://developer.android.com/training/permissions/requesting.html for further details.
 
 ###Using the Builder class
 The following snippet creates a new `SimpleCameraActivity.Buidler` object, chooses the back facing camera, selects the 
