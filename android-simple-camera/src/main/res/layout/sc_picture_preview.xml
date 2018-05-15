@@ -8,7 +8,7 @@
   android:background="@color/sc_background"
   >
 
-  <uk.co.senab.photoview.PhotoView
+  <com.github.chrisbanes.photoview.PhotoView
     android:id="@+id/sc_photo"
     android:layout_width="match_parent"
     android:layout_height="match_parent"/>

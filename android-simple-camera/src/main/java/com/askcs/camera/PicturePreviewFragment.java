@@ -7,16 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import com.askcs.simple_camera.R;
+import com.github.chrisbanes.photoview.PhotoView;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
-import uk.co.senab.photoview.PhotoView;
 
 import java.io.File;
 
 /**
  * TODO: provide class level documentation
  */
-/* package */ class PicturePreviewFragment extends Fragment implements Callback {
+/* package */ public class PicturePreviewFragment extends Fragment implements Callback {
 
     private static final String EXTRA_PICTURE_LOCATION = "extra_picture_location";
 

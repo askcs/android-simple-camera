@@ -57,7 +57,7 @@ public class SimpleCameraActivity extends ActionBarActivity implements SimpleCam
     private static final String STATE_LOCK_TO_LANDSCAPE = "lock_to_landscape";
 
     private SimpleCameraFragment current = null;
-    private PicturePreviewFragment picturePreviewFragment = null;
+    public static PicturePreviewFragment picturePreviewFragment = null;
     private VideoPreviewFragment videoPreviewFragment = null;
 
     private boolean hasTwoCameras = (Camera.getNumberOfCameras() > 1);
